@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: laravel-enterprisems-core
+  labels:
+    environment: production
+spec:
+  containers:
+    - name: laravel-enterprisems-core
+      image: ezekielreginio/laravel-enterprisems-core
+      ports:
+        - name: open-project
+          containerPort: 8181
+          protocol: TCP
+      volumeMounts:
+        - mountPath: "/var/openproject"
+          name: data
+      livenessProbe:
+        tcpSocket:
+          port: 8181
+        initialDelaySeconds: 600
+        timeoutSeconds: 1
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: open-project-storage-claim
+  imagePullSecrets:
+    - name: regcred

@@ -1,0 +1,33 @@
+/* font weight */
+.erp-fw-800{
+    font-weight: 800;
+}
+.erp-fw-500{
+    font-weight: 500;
+}
+.erp-fw-600{
+    font-weight: 600;
+}
+
+
+
+
+/* font size */
+.large-txt{
+    font-size: 20px;
+}
+.medium-txt{
+    font-size: 16px;
+}
+.small-txt{
+    font-size: 11px;
+}
+
+
+/* Font-size for Icon */
+.big-i{
+    font-size: 60px;
+}
+.small-icon{
+    font-size: 21px;
+}

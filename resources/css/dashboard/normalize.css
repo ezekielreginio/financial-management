@@ -1,0 +1,8 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--blue-grey);
+}
+
+span,p,blockquote{
+  font-size: 14px;
+}

@@ -1,0 +1,24 @@
+:root {
+    --blue-grey: #D8E5EC;
+    --white: white;
+    --grey-muted: #808080;
+    --light-blue: #8DADFF;
+    --dark-blue: #1D5AA1;
+    --light-purple: #949EBB;
+    --dark-purple: #58379F;
+    --light-green: #6BCBBF;
+    --dark-green: #16534C;
+
+}
+
+/* font color */
+.erp-txt-white{
+    color: var(--white);
+}
+.erp-txt-grey-muted{
+    color: var(--grey-muted);
+}
+
+.erp-txt-dark-blue{
+    color: var(--dark-blue)
+}

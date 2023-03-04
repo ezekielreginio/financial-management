@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&family=Roboto&display=swap');
+
+.hr-anim
+{
+    background-image: url('https://i.ibb.co/WGYSvnr/oie-421814ey-NEr3-PG.gif'), url('../media/contact-us-anim.gif');
+    background-position: left, right center;
+    background-size: auto, 40%;
+    background-color: #B0D5D6;
+    height:100vh;
+    background-repeat: no-repeat, no-repeat;
+}
+
+.hr-bros
+{
+    background-image: url('../media/erp_logo.png');
+    height:10vh;
+    width: 10vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15vh 15vh;
+}
+
+p, .btn-text
+{
+    font-family: 'Poppins', sans-serif;
+}
+
+.ps-20
+{
+    padding: 10rem 15rem 10rem 15rem !important;
+}
+
+@media (max-width: 1850px) {
+    .ps-20 {
+        padding: 10rem 5rem 10rem 5rem !important;
+    }
+}
+
+.primary-bg
+{
+    background: linear-gradient(90deg, rgba(1,111,196,1) 1%, rgba(147,138,232,1) 43%, rgba(195,155,235,1) 89%);
+}
+
+.fs-10, .btn-text
+{
+    font-size: 13px;
+}
+
+.hr-login
+{
+    padding-left: 20px;
+}
+
+.hris-header
+{
+    font-family: 'Open Sans', sans-serif
+}
