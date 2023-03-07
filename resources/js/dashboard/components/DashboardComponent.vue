@@ -1,9 +1,16 @@
 <template>
-    <div class="container dashboard-wrapper flex-center">
+    <div class="dashboard-wrapper">
         <side-navigation-component current-page="dashboard" />
-        <div class="container flex-col">
-            <top-navigation-component/>
+        <div class="item-right-content">
+            <div class="right-side-item-topnav row">
+                <div class="col-12 col-sm">
+                    <top-navigation-component/>
+                </div>
+            </div>
+         
             <content-component />
+            
+            
         </div>
     </div>
 </template>
@@ -24,6 +31,30 @@
 
 <style scoped>
   .dashboard-wrapper{
-        margin: 1em;
+        padding: auto;
+        display: grid;
+        grid-template-columns: 20% 80%;
+        grid-template-areas: 
+           'leftContent rightContent';
   }
+  .item-left-content{
+    grid-area: leftContent;
+    margin: 1em;
+   }
+  .item-right-content{
+    grid-area: rightContent;
+    width: auto;
+    margin: 1em;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 10% 90%;
+    grid-template-areas:
+       'topnav'
+       'widgets';
+   }
+
+   .right-side-item-topnav{
+    grid-area: topnav;
+   }
+   
 </style>

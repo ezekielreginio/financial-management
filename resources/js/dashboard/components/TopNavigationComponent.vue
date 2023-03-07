@@ -1,5 +1,6 @@
 <template>
-    <div class="top-nav-wrapper">
+  
+    <div class="top-nav-wrapper flex-center ">
       <div class="container flex-center align-items-center">
           <div class="input-icon"><i class="fa-solid fa-magnifying-glass erp-txt-mg"></i></div>
           <input type="text" class="erp-input erp-fw-500" placeholder="Search">
@@ -9,7 +10,7 @@
           <i class="fa-solid fa-bell erp-txt-mg"></i>
           <div class="user-info-wrapper erp-me-1">
               <span class="user-name erp-fw-500">Tanya Singh</span>
-              <span class="user-role erp-fw-500 erp-txt-mg small-txt">Sales Manager</span>
+              <span class="user-role erp-fw-500 erp-txt-mg small-txt">Finance Manager</span>
           </div>
           <span class="avatar-s"></span>
       </div>
@@ -26,8 +27,7 @@
     display: flex;
     background-color: var(--blue-grey);
     border-radius: 10px;
-    width: 958px;
-    height: 63px;
+    height: 74px;
     box-shadow: 0px 5px 31px 5px rgba(0, 0, 0, 0.25);
     justify-content: space-between;
     align-items: center;
@@ -45,7 +45,7 @@
     flex-direction: column;
   }
   .erp-input{
-    height: 35px;
+    height: 46px;
     width: 500px;
     border-radius: 0px 50px 50px 0px;
     background-color: transparent;
@@ -54,7 +54,7 @@
     
   }
   .input-icon{
-    height: 37px;
+    height: 48px;
     width: 30px;
     border-radius: 50px 0px 0px 50px;
     display: flex;

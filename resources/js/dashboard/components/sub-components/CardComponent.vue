@@ -1,7 +1,7 @@
 <template>
     <div class="card container flex-col" :class="cardCss">
         <div class="card-title">Pending <span :class="cardTitleCss">{{cardType}}</span></div>
-        <div class="card-content container flex-row flex-space-between">
+        <div class="card-content container flex-row">
             <i class="fa-solid  big-i icon" :class="cardIconCss"></i>
             <div class="cloud">
                 <div class="cloud-1"></div>
@@ -45,8 +45,8 @@
 <style scoped>
   .card{
     content: " ";
-    width: 285px;
-    height: 136.48px;
+    width: 360px;
+    height: 210px;
     border-radius: 15px;
     box-shadow: 0px 5px 31px 1px rgba(0, 0, 0, 0.25);
   }
@@ -153,4 +153,6 @@
     border-radius: 50px 0px 50px 0px;
     background-color:  var(--white);
   }
+
+  
 </style>
