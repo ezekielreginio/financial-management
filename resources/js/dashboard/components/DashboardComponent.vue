@@ -5,12 +5,9 @@
             <div class="right-side-item-topnav row">
                 <div class="col-12 col-sm">
                     <top-navigation-component/>
+                    <content-component />
                 </div>
             </div>
-         
-            <content-component />
-            
-            
         </div>
     </div>
 </template>
@@ -46,8 +43,8 @@
     width: auto;
     margin: 1em;
     display: grid;
-    grid-template-rows: 100%;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 90%;
     grid-template-areas:
        'topnav'
        'widgets';
