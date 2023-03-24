@@ -32,7 +32,11 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
         $user = User::where('email', request()->get('email'))->firstOrFail();
         if (! $token = auth()->claims($this->setJWTPayload($user))->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid User Credentials. Please try again.',
+                'error_code' => 'INVALID_CREDENTIALS'
+            ], 401);
         }
 
         return $this->respondWithToken($token);

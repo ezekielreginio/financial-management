@@ -19,18 +19,10 @@ class UsersService
     {
         DB::beginTransaction();
         try {
-            $userData = $data['user'];
-            $userData['password'] = app('hash')->make($userData['password']);
-            $userData['fk_access_level'] = 4;
-            $user = $this->repository->storeUser($userData);
-
-            $client = $this->repository->storeClient($data['client'], $user->id);
+            $data['password'] = app('hash')->make($data['password']);
+            $user = $this->repository->storeUser($data);
             DB::commit();
             return [
-                "data" => [
-                    "user" => $user,
-                    "client" => $client
-                ],
                 "message" => "User registered successfully"
             ];
         } catch(Exception $e) {
