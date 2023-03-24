@@ -73,9 +73,9 @@ class UsersController extends Controller
     public function logout()
     {
         auth()->logout();
-        
+
         return $this->parseJsonResponse([
-            'message' => 'Login Successfully'
+            'message' => 'Logged out successfully.'
         ]);
     }
 
