@@ -18,8 +18,10 @@ class CreateAccountsTable extends Migration
             $table->bigInteger('fk_user');
             $table->bigInteger('fk_account_group');
             $table->string('name');
-            $table->float('initial_amount');
-            $table->string('description');
+            $table->float('initial_amount')
+                  ->default(0);
+            $table->string('description')
+                  ->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

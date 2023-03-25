@@ -9,6 +9,6 @@ class AccountGroup extends Model
     protected $table = 'account_groups';
 
     protected $fillable = [
-        'name', 'fk_user', 'is_default'
+        'name', 'fk_user', 'is_default', 'initial_amount'
     ];
 }

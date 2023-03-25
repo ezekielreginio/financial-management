@@ -17,7 +17,10 @@ class CreateTableAccountGroups extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('fk_user');
-            $table->tinyInteger('is_default');
+            $table->tinyInteger('is_default')
+                  ->default(0);
+            $table->string('description')
+                  ->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +33,6 @@ class CreateTableAccountGroups extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_account_groups');
+        Schema::dropIfExists('account_groups');
     }
 }

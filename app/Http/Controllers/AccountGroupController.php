@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestAccountGroup;
 use App\Services\AccountsService;
 use App\Traits\JsonResponseTrait;
 use Illuminate\Http\Request;
@@ -43,9 +44,9 @@ class AccountGroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestAccountGroup $request)
     {
-        return $this->parseJsonResponse($this->service->createAccountGroup($request->all()), 'data');
+        return $this->parseJsonResponse($this->service->createAccountGroup($request->validated()), 'data');
     }
 
     /**

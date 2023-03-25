@@ -10,4 +10,12 @@ class AccountsRepository
     {
         return AccountGroup::create($data);
     }
+
+    public function getAccountGroupByName(int $userId, string $name)
+    {
+        return AccountGroup::where([
+            'fk_user' => $userId,
+            'name' => $name
+        ])->get();
+    }
 }
