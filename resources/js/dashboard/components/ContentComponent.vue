@@ -1,30 +1,45 @@
 <template>
-      <div class="right-side-item-widgets content bs-container m-0 p-0">
+      <div class="content bs-container m-0 p-0">
         <!-- card-group -->
-        <div class="item-widget-cards d-flex flex-row justify-content-between mt-sm-5">
+        <div class="item-widget-cards cd-flex flex-row justify-content-between mt-sm-5 row">
             <card-component 
-                card-type="Inquiries" 
-                card-css="cardInquiries"
-                card-title-css="cardTitleInquiries" 
-                card-icon-css="fa-circle-question iconInquiries"
-                cloud2-txt-css="cloud2Inquiries"
+                card-type="card-blue" 
+                card-title="Total"
+                sub-title="Assets"
+                icon="fa-hand-holding"
+                sub-icon="fa-house"
+                sub-icon2="fa-coins"
+                class="col-3"
             />
 
             <card-component 
-                card-type="Quotations" 
-                card-css="cardQuotations"
-                card-title-css="cardTitleQuotations"
-                card-icon-css="fa-file-invoice iconQuotations"
-                cloud2-txt-css="cloud2Quotations"
+                card-type="card-purple"
+                card-title=""
+                sub-title="Liabilities"
+                icon="fa-sack-xmark" 
+                sub-icon=""
+                sub-icon2=""
+                class="col-3"
             />
 
             <card-component 
-                card-type="Orders" 
-                card-css="cardOrders"
-                card-title-css="cardTitleOrders"
-                card-icon-css="fa-gear iconOrders"
-                cloud2-txt-css="cloud2Orders"
+                card-type="card-green"
+                card-title="This Month's"
+                sub-title="Expenses" 
+                icon="fa-wallet" 
+                sub-icon=""
+                sub-icon2=""
+                class="col-3"
             />  
+            <card-component 
+                card-type="card-green"
+                card-title="This Month's"
+                sub-title="Expenses" 
+                icon="fa-wallet" 
+                sub-icon=""
+                sub-icon2=""
+                class="col-3"
+            /> 
         </div>
         <!-- table -->
         <div class="item-widget-tables">
@@ -60,10 +75,13 @@
 .item-widget-tables{
     grid-area: tables;
 }
-.right-side-item-widgets{
+.content{
+    width: 100%;
     display: grid;
+    grid-template-columns: 100%;
     grid-template-areas: 
     'cards'
     'tables';
 }
+
 </style>

@@ -1,11 +1,15 @@
 <template>
-    <div class="card container flex-col" :class="cardCss">
-        <div class="card-title">Pending <span :class="cardTitleCss">{{cardType}}</span></div>
+    <div class="card container flex-col" :class="cardType">
+        <div class="card-title">{{cardTitle}}<span>{{SubTitle}}</span></div>
         <div class="card-content container flex-row">
-            <i class="fa-solid  big-i icon" :class="cardIconCss"></i>
+            <span class="fa-stack">
+              <i class="fa-solid  big-i icon" :class="Icon"></i>
+              <i class="fa-solid  big-i icon" :class="SubIcon"></i>
+              <i class="fa-solid  big-i icon" :class="SubIcon2"></i>
+            </span>
             <div class="cloud">
                 <div class="cloud-1"></div>
-                <div class="cloud-2"><span :class="cloud2TxtCss">21</span></div>
+                <div class="cloud-2"><span>100,000,000</span></div>
                 <div class="cloud-3"></div>
             </div>
         </div>
@@ -16,25 +20,24 @@
   export default { 
       props: {
         'cardType' : {
-            type : String
+            type : String,
+            // default: 'card-blue',
         },
-        'cardCss' : {
+        'cardTitle' : {
             type: String,
-            default: 'cardInquiries'
         },
-        'cardTitleCss' : {
+        'SubTitle' : {
             type: String,
-            default: 'cardTitleInquiries'
         },
-        'cardIconCss' : {
-            type: String,
-            default: 'fa-circle-question iconInquiries'
+        'Icon' : {
+          type: String,
         },
-        'cloud2TxtCss' : {
-            type: String,
-            default: 'cloud2Inquiries'
+        'SubIcon' : {
+          type: String,
+        },
+        'SubIcon2' : {
+          type: String,
         }
-
       },
       mounted() {
         console.log(this.cardType)
@@ -46,61 +49,162 @@
   .card{
     content: " ";
     width: 360px;
-    height: 210px;
+    height: 200px;
     border-radius: 15px;
     box-shadow: 0px 5px 31px 1px rgba(0, 0, 0, 0.25);
+    z-index: -1;
   }
-  /* card-background */
-  .cardInquiries{
+  /* card-blue css */
+  .card-blue{
     background-color: var(--light-blue);
   }
-  .cardQuotations{
-    background-color: var(--light-purple);
-  }
-  .cardOrders{
-    background-color: var(--light-green);
-  }
-  .card-title{
+  .card-blue .card-title{
     font-size: 20px;
     font-weight: 500;
     color: var(--white);
     margin: 1em;
     margin-left: 1.5em;
     margin-bottom: 0em;
-    font-size: 20px;
+    font-size: 25px !important;
     font-weight: 500;
   }
-  /* card-subtitle */
-  .cardTitleInquiries{
-    font-size: 20px;
+  .card-blue .card-title span{
+    font-size: 25px;
+    margin-left: 0.3em;
     font-weight: 500;
     color: var(--dark-blue);
   }
-  .cardTitleQuotations{
-    font-size: 20px;
+
+  .card-blue .cloud .cloud-2 span{
     font-weight: 500;
-    color: var(--dark-purple);
-  }
-  .cardTitleOrders{
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--dark-green);
-  }
-  .icon{
+    font-size: 35px;
     margin-top: 0.2em;
-    margin-left: 0.5em;
-    margin-bottom: 0.5em;
+    margin-right: 0.2em;
+    color: var(--light-blue);
   }
-  /* icon color */
-  .iconInquiries{
+  .card-blue .fa-stack{
+    display: inline-block;
+    height: 2em;
+    line-height: 2em;
+    position: relative;
+    vertical-align: middle;
+    width: 2.5em;
+    left: -5px;
+    top: -15px;
+    position: relative;
+  }
+  .card-blue .fa-stack i:nth-child(1){
     color: var(--dark-blue);
+    top: 15px;
+    z-index: 0;
+    left: 65px;
+    opacity: 30%;
+    position: relative;
+    transform: scale(8);
   }
-  .iconQuotations{
+  .card-blue .fa-stack i:nth-child(2){
+    color: var(--dark-blue);
+    z-index: 0;
+    left: 30px;
+    opacity: 30%;
+    position: relative;
+    transform: scale(3);
+  }
+  .card-blue .fa-stack i:nth-child(3){
+    color: var(--dark-blue);
+    z-index: 0;
+    top: -27px;
+    left: 85px;
+    opacity: 30%;
+    position: relative;
+    transform: scale(3);
+  }
+  /* end of card-blue css */
+  
+  /* card-purple css */
+  .card-purple{
+    background-color: var(--light-purple);
+  }
+  .card-purple .card-title{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--white);
+    margin: 1em;
+    margin-left: 1.5em;
+    margin-bottom: 0em;
+    font-size: 25px !important;
+    font-weight: 500;
+  }
+  .card-purple .card-title span{
+    font-size: 25px;
+    margin-left: 0.3em;
+    font-weight: 500;
     color: var(--dark-purple);
   }
-  .iconOrders{
-    color: var(--dark-green);
+
+  .card-purple .cloud .cloud-2 span{
+    font-weight: 500;
+    font-size: 35px;
+    margin-top: 0.2em;
+    margin-right: 0.2em;
+    color: var(--light-purple);
   }
+
+  .card-purple .fa-stack i:nth-child(1){
+    color: var(--dark-purple);
+    top: 15px;
+    z-index: 0;
+    left: 60px;
+    opacity: 30%;
+    position: relative;
+    transform: scale(8);
+  }
+  /* end of card-purple css */
+
+  /* card-green css */
+  .card-green{
+    background-color: var(--light-green);
+  }
+
+  .card-green .card-title{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--white);
+    margin: 1em;
+    margin-left: 1.5em;
+    margin-bottom: 0em;
+    font-size: 25px !important;
+    font-weight: 500;
+  }
+
+  .card-green .card-title span{
+    color: var(--dark-green);
+    margin: 0.2em;
+    margin-left: 0.2em;
+    margin-bottom: 1em;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  
+  .card-green .cloud .cloud-2 span{
+    font-weight: 500;
+    font-size: 35px;
+    margin-top: 0.2em;
+    margin-right: 0.2em;
+    color: var(--light-green);
+  }
+
+  .card-green .fa-stack i:nth-child(1){
+    color: var(--dark-green);
+    top: 15px;
+    z-index: 0;
+    left: 60px;
+    opacity: 30%;
+    position: relative;
+    transform: scale(8);
+  }
+ 
+  /* cloud css */
   .cloud{
     width: 400px;
     display: flex;
@@ -109,7 +213,7 @@
   }
   .cloud-1{
     content: " ";
-    width: 60px;
+    width: 130px;
     height: 22.24px;
     border-radius: 50px 0px 0px 50px;
     background-color:  var(--white);
@@ -117,42 +221,27 @@
   }
   .cloud-2{
     content: " ";
-    width: 137px;
-    height: 53px;
+    width: 234px;
+    height: 55px;
     border-radius: 50px 0px 0px 50px;
     background-color:  var(--white);
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
   }
-  .cloud-2 span{
-    font-weight: 500;
-    font-size: 40px;
-    margin-top: 0.2em;
-  }
+  
   /* cloud number */
-  .cloud2Inquiries{
-    font-weight: 500;
-    font-size: 40px;
-    color: var(--light-blue);
-  }
-  .cloud2Quotations{
-    font-weight: 500;
-    font-size: 40px;
-    color: var(--light-purple);
-  }
-  .cloud2Orders{
-    font-weight: 500;
-    font-size: 40px;
-    color: var(--light-green);
-  }
+  
   .cloud-3{
     content: " ";
-    width: 152px;
+    width: 252px;
     height: 10.5px;
     border-radius: 50px 0px 50px 0px;
     background-color:  var(--white);
   }
-
+  .card-content{
+    margin-top: 3.2em;
+  }
+ 
   
 </style>

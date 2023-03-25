@@ -5,6 +5,10 @@
             <div class="right-side-item-topnav row">
                 <div class="col-12 col-sm">
                     <top-navigation-component/>
+                </div>
+            </div>
+            <div class="right-side-item-widgets row">
+                <div class="col-12 col-sm">
                     <content-component />
                 </div>
             </div>
@@ -26,7 +30,7 @@
     }
 </script>
 
-<style scoped>
+<style>
   .dashboard-wrapper{
         padding: auto;
         display: grid;
@@ -44,7 +48,6 @@
     margin: 1em;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 10% 90%;
     grid-template-areas:
        'topnav'
        'widgets';
@@ -52,6 +55,9 @@
 
    .right-side-item-topnav{
     grid-area: topnav;
+   }
+   .right-side-item-widgets{
+    grid-area: widgets;
    }
    
 </style>
