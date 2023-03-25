@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountGroupController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
@@ -27,4 +28,12 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('logout', [UsersController::class, 'logout']);
     Route::post('me', [UsersController::class, 'me']);
 });
+
+Route::group(['middleware' => ['api.auth']], function () {
+    Route::group(['prefix' => 'account-group'], function () {
+        Route::post('/', [AccountGroupController::class, 'store']);
+    });
+});
+
+
 
