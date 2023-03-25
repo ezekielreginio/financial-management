@@ -11,6 +11,11 @@ class AccountsRepository
         return AccountGroup::create($data);
     }
 
+    public function storeAccount(array $data)
+    {
+        return AccountGroup::create($data);
+    }
+
     public function getAccountGroupByName(int $userId, string $name)
     {
         return AccountGroup::where([
