@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountGroupController;
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
@@ -32,6 +33,10 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['middleware' => ['api.auth']], function () {
     Route::group(['prefix' => 'account-group'], function () {
         Route::post('/', [AccountGroupController::class, 'store']);
+        Route::get('/all', [AccountGroupController::class, 'all']);
+    });
+    Route::group(['prefix' => 'account'], function () {
+        Route::post('/', [AccountsController::class, 'store']);
     });
 });
 

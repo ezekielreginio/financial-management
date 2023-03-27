@@ -46,7 +46,12 @@ class AccountGroupController extends Controller
      */
     public function store(RequestAccountGroup $request)
     {
-        return $this->parseJsonResponse($this->service->createAccountGroup($request->validated()), 'data');
+        return $this->parseJsonResponse($this->service->createAccountGroup($request->validated(), auth()->user()->id), 'data');
+    }
+
+    public function all()
+    {
+        return $this->parseJsonResponse($this->service->getAllAccountGroups(auth()->user()->id), 'data');
     }
 
     /**

@@ -13,9 +13,9 @@ class AccountsService
         $this->accountsRepository = $accountsRepository;
     }
     
-    public function createAccountGroup(array $data)
+    public function createAccountGroup(array $data, int $userId)
     {
-        $data['fk_user'] = auth()->user()->id;
+        $data['fk_user'] = $userId;
         $accountGroup = $this->accountsRepository->storeAccountGroup($data);
 
         return [
@@ -26,9 +26,26 @@ class AccountsService
         ];
     }
 
-    public function createAccount(array $data)
+    public function getAllAccountGroups(int $userId)
     {
-        $data['fk_user'] = auth()->user()->id;
+        $accountGroups = $this->accountsRepository->getAllAccountGroups($userId);
+
+        return [
+            'data' => $accountGroups,
+            'message' => 'Account Groups Fetched Successfully.'
+        ];
+    }
+
+    public function createAccount(array $data, int $userId)
+    {
+        $data['fk_user'] = $userId;
+
+        //Checks if account name is specified in the parameters
+        if (isset($data['account_group'])) {
+            $accountGroup = $this->accountsRepository->firstOrCreateAccountGroup($data['fk_user'], $data['account_group']);
+            $data['fk_account_group'] = $accountGroup->id;
+        }
+
         $accountGroup = $this->accountsRepository->storeAccount($data);
 
         return [

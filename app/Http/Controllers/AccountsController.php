@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestAccount;
+use App\Services\AccountsService;
+use App\Traits\JsonResponseTrait;
 use Illuminate\Http\Request;
 
 class AccountsController extends Controller
 {
+    use JsonResponseTrait;
+
+    private AccountsService $service;
+
+    public function __construct(AccountsService $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,9 +44,9 @@ class AccountsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestAccount $request)
     {
-        //
+        return $this->parseJsonResponse($this->service->createAccount($request->all(), auth()->user()->id), 'data');
     }
 
     /**

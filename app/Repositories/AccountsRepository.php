@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Account;
 use App\Models\AccountGroup;
 
 class AccountsRepository
@@ -11,9 +12,11 @@ class AccountsRepository
         return AccountGroup::create($data);
     }
 
-    public function storeAccount(array $data)
+    public function getAllAccountGroups(int $userId)
     {
-        return AccountGroup::create($data);
+        return AccountGroup::where('fk_user', $userId)
+                ->with('accounts')
+                ->get();
     }
 
     public function getAccountGroupByName(int $userId, string $name)
@@ -21,6 +24,27 @@ class AccountsRepository
         return AccountGroup::where([
             'fk_user' => $userId,
             'name' => $name
-        ])->get();
+        ])->first();
+    }
+    
+    public function firstOrCreateAccountGroup(int $userId, string $name)
+    {
+        return AccountGroup::firstOrCreate([
+            'fk_user' => $userId,
+            'name' => $name
+        ]);
+    }
+
+    public function storeAccount(array $data)
+    {
+        return Account::create($data);
+    }
+    
+    public function getAccountByName(int $accountGroup, string $name)
+    {
+        return Account::where([
+            'fk_account_group' => $accountGroup,
+            'name' => $name
+        ])->first();
     }
 }
