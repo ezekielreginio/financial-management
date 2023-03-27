@@ -3,14 +3,10 @@
         <side-navigation-component current-page="dashboard" />
         <div class="item-right-content">
             <div class="right-side-item-topnav row">
-                <div class="col-12 col-sm">
                     <top-navigation-component/>
-                </div>
             </div>
-            <div class="right-side-item-widgets row">
-                <div class="col-12 col-sm">
+            <div class="right-side-item-widgets row"> 
                     <content-component />
-                </div>
             </div>
         </div>
     </div>
@@ -55,9 +51,11 @@
 
    .right-side-item-topnav{
     grid-area: topnav;
+    margin: 0em 1em;
    }
    .right-side-item-widgets{
     grid-area: widgets;
+    margin: 0em 1em;
    }
    
 </style>

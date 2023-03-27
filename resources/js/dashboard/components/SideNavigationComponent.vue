@@ -34,7 +34,6 @@
     background-color: var(--white);
     width: 340px;
     border-radius: 20px;
-    margin-right: 3em;
     box-shadow: 0px 5px 31px 5px rgba(0, 0, 0, 0.25);
   }
 .side-nav-header{
