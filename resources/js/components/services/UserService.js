@@ -2,10 +2,10 @@ import axios from "axios";
 
 export default {
     async loginRequest(data) {
-        return await axios.post(`http://localhost:8001/users/auth/login`, data, {
+        console.log(process.env.APP_NAME)
+        return await axios.post(`http://localhost:8000/api/auth/login`, data, {
             headers: {
                 'Content-Type': 'application/json',
-
             }
         })
     }

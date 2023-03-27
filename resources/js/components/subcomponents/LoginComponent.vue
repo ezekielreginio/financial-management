@@ -16,7 +16,7 @@
                 </div>
                 <div class="d-grid gap-2 mt-3">
                     <button type="submit" class="btn primary-bg text-white py-3 btn-text">LOG IN</button>
-                    <p class="text-primary cursor-pointer text-center pt-5 fs-5" @click.prevent="changeView('inquiry-form-component')">Inquire Today, Click Here!</p>
+                    <p class="text-primary cursor-pointer text-center pt-5 fs-5" @click.prevent="changeView('inquiry-form-component')">Create an Account? Click Here!</p>
                 </div>
             </form>
         </div> 

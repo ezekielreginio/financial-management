@@ -49,11 +49,9 @@ export default {
         async loginUser()
         {
             let vm = this
-            await axios.get('/sanctum/csrf-cookie')
-            await axios.post('api/login', this.form)
+            await axios.post('api/auth/login', this.form)
             .then((data)=>{
-                vm.isAuthenticated = true
-                this.signIn()
+                console.log(data)
             })
             .catch((error) => {
                 // console.log("Error! ", JSON.stringify(error.response.data.errors))
