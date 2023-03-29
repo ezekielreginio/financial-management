@@ -44,6 +44,7 @@
     margin: 1em;
     display: grid;
     grid-template-columns: 100%;
+    grid-template-rows: 10% 90%;
     grid-template-areas:
        'topnav'
        'widgets';

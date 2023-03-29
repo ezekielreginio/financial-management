@@ -22,3 +22,7 @@
 .erp-txt-dark-blue{
     color: var(--dark-blue)
 }
+
+.bg-white{
+    background-color: var(--white);
+}

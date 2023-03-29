@@ -2,6 +2,15 @@
     width: 60px;
     height: 52px;
 }
+.card{
+  border-radius: 15px;
+}
+.border-grey{
+  border: solid 1px var(--grey-muted);
+}
+.border-blue{
+  border: solid 1px var(--dark-blue);
+}
 /* for containers */
 .container{
     display: flex;
