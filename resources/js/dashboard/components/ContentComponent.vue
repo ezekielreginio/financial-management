@@ -31,7 +31,6 @@
                 sub-icon2=""
                 class="col-xxl-4 m-0 p-0"
             />  
-            
         </div>
         <!-- table -->
         <div class="item-widget-charts d-flex justify-content-center">
