@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Services\UsersService;
 use App\Traits\JsonResponseTrait;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UsersController extends Controller
 {
@@ -96,4 +97,22 @@ class UsersController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
+
+    /**
+     * Get the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     * 
+     * @author Ezekiel Reginio <ezekiel@1export.com>
+     */
+    public function me(Request $request)
+    {
+        if (!isset(auth('api')->user()->id)) {
+            abort(403, "Please login and try again.");
+        }
+        
+        return auth('api')->user();
+    }
+
+    
 }

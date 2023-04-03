@@ -17,7 +17,9 @@ Route::prefix('finance-management')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
+    Route::group(['middleware' => ['isAuthorized']], function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard.index');
+        });
     });
 });

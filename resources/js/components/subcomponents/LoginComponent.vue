@@ -6,13 +6,18 @@
 
         <div class="container p-0 m-0">
             <form @submit.prevent="login">
+                <div v-if="alertMessage" class="alert alert-danger" role="alert">
+                    {{ alertMessage }}
+                </div>
                 <div class="form-floating mb-3">
                     <input type="email" v-model="form.email" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Email address</label>
+                    <p v-if="errors.email" class="text-danger">{{ errors.email }}</p>
                 </div>
                 <div class="form-floating">
                     <input type="password" v-model="form.password" class="form-control" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
+                    <p v-if="errors.password" class="text-danger">{{ errors.password }}</p>
                 </div>
                 <div class="d-grid gap-2 mt-3">
                     <button type="submit" class="btn primary-bg text-white py-3 btn-text">LOG IN</button>
@@ -26,6 +31,7 @@
 <script>
 import { mapActions } from 'vuex'
 import UserService from '../services/UserService.js'
+import CookieService from '../../services/CookieService.js'
 
 export default {
     data() {
@@ -33,7 +39,12 @@ export default {
             form: {
                 email: null,
                 password: null
-            } 
+            },
+            errors: {
+                email: null,
+                password: null,
+            },
+            alertMessage: null 
         }
     },
     methods: {
@@ -41,10 +52,40 @@ export default {
             changeView: 'welcome/setCurrentView'
         }),
         login() {
+            if (this.validateForm()) {
+                return;
+            }
+
             UserService.loginRequest(this.form)
             .then((response) => {
-                console.log(response.data)
+                if (response.status == 200) {
+                    CookieService.setCookie('user_token', response.data.access_token);
+                    window.location.href = '/finance-management/dashboard'
+                } else {
+                    this.invalidateCredentials()
+                }
             })
+            .catch(error => {
+                this.invalidateCredentials()
+            })
+        },
+        validateForm() {
+            let hasErrors = false
+            this.alertMessage = null
+            this.errors = {
+                email: null,
+                password: null
+            } 
+            Object.keys(this.errors).forEach(field => {
+                if (!this.form[field]) {
+                    this.errors[field] = 'Please input the ' + field + '.'
+                    hasErrors = true
+                }
+            })
+            return hasErrors
+        },
+        invalidateCredentials() {
+            this.alertMessage = "Invalid Login Credentials. Please Try Again."
         }
     }
 }
