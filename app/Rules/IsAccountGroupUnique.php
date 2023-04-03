@@ -17,7 +17,9 @@ class IsAccountGroupUnique implements Rule
     public function passes($attribute, $value)
     {
         $repository = resolve(AccountsRepository::class);
-        if (!$repository->getAccountGroupByName(auth()->user()->id, $value)->isEmpty()) {
+        $accountGroup = $repository->getAccountGroupByName(auth()->user()->id, $value);
+        
+        if ($accountGroup != null) {
             return false;
         }
 
