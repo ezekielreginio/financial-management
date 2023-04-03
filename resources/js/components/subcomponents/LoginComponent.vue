@@ -21,7 +21,7 @@
                 </div>
                 <div class="d-grid gap-2 mt-3">
                     <button type="submit" class="btn primary-bg text-white py-3 btn-text">LOG IN</button>
-                    <p class="text-primary cursor-pointer text-center pt-5 fs-5" @click.prevent="changeView('inquiry-form-component')">Create an Account? Click Here!</p>
+                    <p class="text-primary cursor-pointer text-center pt-5 fs-5" @click.prevent="changeView('registration-component')">Create an Account? Click Here!</p>
                 </div>
             </form>
         </div> 
@@ -30,6 +30,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import FormMixins from '../../mixins/FormMixins.vue'
 import UserService from '../services/UserService.js'
 import CookieService from '../../services/CookieService.js'
 
@@ -40,18 +41,18 @@ export default {
                 email: null,
                 password: null
             },
-            errors: {
-                email: null,
-                password: null,
-            },
+            errors: {},
             alertMessage: null 
         }
     },
+    mixins: [FormMixins],
     methods: {
         ...mapActions({
             changeView: 'welcome/setCurrentView'
         }),
         login() {
+            this.alertMessage = null
+
             if (this.validateForm()) {
                 return;
             }
@@ -59,7 +60,7 @@ export default {
             UserService.loginRequest(this.form)
             .then((response) => {
                 if (response.status == 200) {
-                    CookieService.setCookie('user_token', response.data.access_token);
+                    CookieService.setCookie('user_token', response.data.data.access_token);
                     window.location.href = '/finance-management/dashboard'
                 } else {
                     this.invalidateCredentials()
@@ -68,21 +69,6 @@ export default {
             .catch(error => {
                 this.invalidateCredentials()
             })
-        },
-        validateForm() {
-            let hasErrors = false
-            this.alertMessage = null
-            this.errors = {
-                email: null,
-                password: null
-            } 
-            Object.keys(this.errors).forEach(field => {
-                if (!this.form[field]) {
-                    this.errors[field] = 'Please input the ' + field + '.'
-                    hasErrors = true
-                }
-            })
-            return hasErrors
         },
         invalidateCredentials() {
             this.alertMessage = "Invalid Login Credentials. Please Try Again."

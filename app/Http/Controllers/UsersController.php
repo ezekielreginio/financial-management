@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Services\UsersService;
 use App\Traits\JsonResponseTrait;
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UsersController extends Controller
 {
@@ -44,24 +43,8 @@ class UsersController extends Controller
     {
         $credentials = request(['email', 'password']);
         $user = User::where('email', request()->get('email'))->firstOrFail();
-        if (! $token = auth()->claims($this->setJWTPayload($user))->attempt($credentials)) {
-            return $this->parseJsonResponse([
-                'success' => false,
-                'code' => 401,
-                'message' => 'Invalid User Credentials. Please try again.',
-                'error_code' => 'INVALID_CREDENTIALS'
-            ]);
-        }
 
-        return $this->parseJsonResponse([
-            'message' => 'Login Successfully',
-            'data' => [
-                'access_token' => $token,
-                'token_type' => 'bearer',
-                'expires_in' => auth()->factory()->getTTL() * 60,
-                'user' => auth()->user()
-            ]
-        ]);
+        return response()->json($this->service->login($user, $credentials));
     }
 
     /**
@@ -81,24 +64,6 @@ class UsersController extends Controller
     }
 
     /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * 
-     * @author Ezekiel Reginio <ezekiel@1export.com>
-     */
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
-        ]);
-    }
-
-    /**
      * Get the authenticated User.
      *
      * @return \Illuminate\Http\JsonResponse
@@ -113,6 +78,4 @@ class UsersController extends Controller
         
         return auth('api')->user();
     }
-
-    
 }

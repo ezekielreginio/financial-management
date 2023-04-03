@@ -2,8 +2,8 @@
     <div>
         <div class="hr-anim" v-if="!isAuthenticated">
             <div id="hr-form" class="container h-100 float-end bg-white ps-20" :class="{
-                'hr-login' : currentView == 'login-component' || currentView == null,
-                'hr-inquiry' : currentView == 'inquiry-form-component'
+                'finance-login' : currentView == 'login-component' || currentView == null,
+                'finance-registration' : currentView == 'registration-component'
             }">
                 <div class="d-flex flex-row bd-highlight mb-3">
                     <div class="hr-bros"></div>
@@ -18,14 +18,13 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { mapActions, mapGetters } from 'vuex'
 import LoginComponent from './subcomponents/LoginComponent.vue'
-import InquiryFormComponent from './subcomponents/InquiryFormComponent.vue'
+import InquiryFormComponent from './subcomponents/RegistrationComponent.vue'
 export default {
     components: {
         'login-component': LoginComponent,
-        'inquiry-form-component': InquiryFormComponent,
+        'registration-component': InquiryFormComponent,
     },
     computed: {
         ...mapGetters({
@@ -34,35 +33,19 @@ export default {
     },
     data(){
         return {
-            form:{
-                'email' : '',
-                'password' : ''
-            },
             isAuthenticated: false,
         }
     },
     methods: {
         ...mapActions({
-            signIn:'auth/login',
             changeView: 'welcome/setCurrentView'
         }),
-        async loginUser()
-        {
-            let vm = this
-            await axios.post('api/auth/login', this.form)
-            .then((data)=>{
-                console.log(data)
-            })
-            .catch((error) => {
-                // console.log("Error! ", JSON.stringify(error.response.data.errors))
-            })
-        }
     }
 }
 </script>
 
 <style scoped>
-.hr-login {
+.finance-login {
     position: absolute;
     display: block;
     right:0;
@@ -70,7 +53,7 @@ export default {
     transition: 1s;
 }
 
-.hr-inquiry {
+.finance-registration {
     position: absolute;
     display: block;
     transition: 1s;

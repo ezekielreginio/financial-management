@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('finance-management')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', [LandingPageController::class, 'index']);
     Route::group(['middleware' => ['isAuthorized']], function () {
         Route::get('/dashboard', function () {
             return view('dashboard.index');

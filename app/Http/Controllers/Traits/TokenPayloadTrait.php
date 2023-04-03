@@ -11,7 +11,6 @@ trait TokenPayloadTrait
         return [
             'user' => [
                 'id' => $user->id,
-                'fk_access_level' => $user->fk_access_level,
                 'name' => $user->name
             ]
         ];
