@@ -7,6 +7,7 @@
             </div>
             <div class="right-side-item-widgets row"> 
                     <content-component />
+                    <content-component />
             </div>
         </div>
     </div>

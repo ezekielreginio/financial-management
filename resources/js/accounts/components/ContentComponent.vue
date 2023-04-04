@@ -1,5 +1,5 @@
 <template>
-      <div class="content">
+      <div class="content mb-5">
          <div class="cash-assets">
             <div class="row">
                   <div class="divider-title col-2">
