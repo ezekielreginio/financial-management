@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="card-title">
-            Philippine Bankd dsadswadjohdlshdkbsakdbskabdksabdksabdklasdka
+            Philippine Bank Bank Bank Bank Bank Bank Bank Bank Bank Test
         </div>
         <div class="card-content">
             <div class="currency">
@@ -32,8 +32,8 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 345px;
-    height: 157px;
+    width: 381px;
+    height: 193px;
     border-radius: 26px;
     overflow: hidden;
     animation: none;
@@ -70,7 +70,7 @@
     display: block;
     content: "";
     background-color: var(--white);
-    width: 105.81px;
+    width: 141.81px;
     height:98.86px;
     border-radius: 100%;
     position: relative;
@@ -105,13 +105,18 @@
     font-weight: 600;
     color: var(--white);
     text-align: left;
-    width: 250px;
+    width: 265px;
     padding-right: 50px;
     position: relative;
     top: -55px;
     height: 61.33px;
-    overflow: hidden;
+    display: inline-block;/* or inline-block */
     text-overflow: ellipsis;
+    word-wrap: word-break;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .card-content{
