@@ -39,7 +39,7 @@
     animation: none;
     box-shadow: 0px 5px 31px 1px rgba(0, 0, 0, 0.25);
   }
-  .edit-icon:hover{
+  .card-v2:hover .card-v2-inner2{
     animation: editIcon 0.8s;
     animation-timing-function:linear;
     animation-fill-mode:forwards;
@@ -53,9 +53,9 @@
   }
 
   @keyframes editIcon {
-    0% {transform: scale(1);}
-    30% {transform: scale(1.1);}
-    100% {transform: scale(1.2);}
+    0% {transform: translate(80px, -99px);}
+    30% {transform: translate(80px, -40px);}
+    100% {transform: translate(80px, -30px);}
   }
   @keyframes grow {
     0% {transform: scale(1);}
@@ -85,7 +85,8 @@
     height:98.86px;
     border-radius: 100%;
     position: relative;
-    transform: translate(80px, -30px);
+    transform: translate(80px, -99px);
+    /* transform: translate(80px, -30px); */
    
   }
   .card-v2-inner2 i{
@@ -122,7 +123,7 @@
 .card-content{
     display: flex;
     flex-direction: row;
-    width: 300px;
+    width: 315px;
     height: 41px;
     transform: translateY(-25px);
     position: relative;
@@ -131,7 +132,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
+    width: 55px;
     height: 41px;
     background-color: #435278;
     border-radius: 10px 0px 0px 10px; 
@@ -146,7 +147,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
+    width: 260px;
     height: 42px;
     border-radius: 0px 10px 10px 0px;
     background-color: var(--white); 
