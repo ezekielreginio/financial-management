@@ -17,6 +17,7 @@ Vue.use(VueRouter)
 
 /* Authenticated Component */
 const Dashboard = () => import('../components/Dashboard.vue' /* webpackChunkName: "resource/js/components/dashboard" */)
+const Accounts = () => import('../components/Accounts.vue' /* webpackChunkName: "resource/js/components/dashboard" */)
 /* Authenticated Component */
 
 
@@ -25,6 +26,11 @@ const Routes = [
         path: '/dashboard',
         component: Dashboard,
         name: 'dashboard'
+    },
+    {
+        path: '/accounts',
+        component: Accounts,
+        name: 'accounts'
     },
 ]
 
@@ -38,12 +44,14 @@ router.beforeEach((to, from, next) => {
     if(to.meta.middleware=="guest"){
         if(store.state.auth.authenticated){
             next({name:"dashboard"})
+            next({name:"accounts"})
         }
         next()
     }else{
         if(store.state.auth.authenticated){
             console.log("Authenticated")
             router.push({name:'dashboard'})
+            router.push({name:'accounts'})
         }else{
             // next({name:"login"})
         }

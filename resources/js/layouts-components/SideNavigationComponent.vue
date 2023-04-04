@@ -6,7 +6,7 @@
       </div>
       <ul class="side-nav-ul">
             <li class="side-nav-li" :class="{ active: currentPage=='dashboard' }"><a href="#"><i class="fa-solid fa-grip"></i>Dashboard</a></li>
-            <li class="side-nav-li" :class="{ active: currentPage=='sales-management' }"><a href="#"><i class="fa-solid fa-chart-line"></i>Sales Management</a></li>
+            <li class="side-nav-li" :class="{ active: currentPage=='accounts' }"><a href="#"><i class="fa-solid fa-chart-line"></i>Accounts</a></li>
             <li class="side-nav-li"><a href="#"><i class="fa-solid fa-file-signature"></i>Inventory</a></li>
             <li class="side-nav-li"><a href="#"><i class="fa-solid fa-users"></i>Human Resources</a></li>
             <li class="side-nav-li"><a href="#"><i class="fa-solid fa-sack-dollar"></i>Finance</a></li>

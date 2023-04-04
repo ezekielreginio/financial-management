@@ -1,6 +1,6 @@
 <template>
-    <div class="dashboard-wrapper">
-        <side-navigation-component current-page="dashboard" />
+    <div class="accounts-wrapper">
+        <side-navigation-component current-page="accounts" />
         <div class="item-right-content">
             <div class="right-side-item-topnav row">
                     <top-navigation-component/>
@@ -26,8 +26,8 @@
     }
 </script>
 
-<style>
-  .dashboard-wrapper{
+<style scoped>
+.accounts-wrapper{
         padding: auto;
         display: grid;
         grid-template-columns: 20% 80%;
@@ -58,5 +58,4 @@
     grid-area: widgets;
     margin: 0em 1em;
    }
-   
 </style>

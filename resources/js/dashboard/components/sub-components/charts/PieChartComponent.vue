@@ -25,14 +25,6 @@ export default {
           fillOpacity: 0.2
     }));
 
-    chart.topAxesContainer.children.push(am5.Label.new(root, {
-          text: "Assets Breakdown",
-          fontSize: 25,
-          fontWeight: "500",
-          fontColor:"#498BC8",
-          x: am5.p50,
-          centerX: am5.p50
-    }));
 
     let series = chart.series.push(
     am5percent.PieSeries.new(root, {
@@ -61,7 +53,5 @@ export default {
   height: 100%;
   width: 100%;
 }
-
-
 
 </style>

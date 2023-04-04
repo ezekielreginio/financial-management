@@ -17,6 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
 mix.js('resources/js/dashboard/dashboard.js', 'public/js')
+mix.js('resources/js/accounts/accounts.js', 'public/js')
 
 // Css Mixs
 mix.styles(['resources/css/dashboard/main.css',

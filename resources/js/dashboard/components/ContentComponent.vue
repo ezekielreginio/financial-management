@@ -32,6 +32,12 @@
                 class="col-xxl-4 m-0 p-0"
             />  
         </div>
+        <!-- table -->
+        <div class="item-widget-tables mt-3 row">
+            <div class="col-12">
+              <table-component-vue  table-title="Transactions Summary"/>
+            </div>
+        </div>
         <!-- charts -->
         <div class="item-widget-charts mt-3 row">
             <div class="card card-chart border-blue col-12">
@@ -40,6 +46,9 @@
             <div class="card card-chart border-blue mt-3 col-6">
               <pie-chart-component />
             </div>
+            <div class="card card-chart border-blue mt-3 col-6">
+              <line-chart-component />
+            </div>
         </div>        
       </div>    
 </template>
@@ -47,14 +56,18 @@
 <script>
 
     import CardComponent from './sub-components/CardComponent.vue';
-    import BarChartComponent from './sub-components/BarChartComponent.vue';
-    import PieChartComponent from './sub-components/PieChartComponent.vue'
+    import BarChartComponent from './sub-components/charts/BarChartComponent.vue';
+    import PieChartComponent from './sub-components/charts/PieChartComponent.vue'
+    import LineChartComponent from './sub-components/charts/LineChartComponent.vue';
+    import TableComponentVue from './sub-components/TableComponent.vue';
 
     export default {
         components : {
             CardComponent,
             BarChartComponent,
-            PieChartComponent
+            PieChartComponent,
+            LineChartComponent,
+            TableComponentVue
         }
     }
 </script>
@@ -74,6 +87,9 @@
     margin: 0em 5em;
     grid-area: cards
 }
+.item-widget-tables{
+    grid-area: tables;
+}
 .item-widget-charts{
     grid-area: charts;
 }
@@ -81,9 +97,10 @@
     width: 100%;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     grid-template-areas: 
     'cards'
+    'tables'
     'charts';
 }
 
