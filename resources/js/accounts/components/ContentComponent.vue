@@ -1,50 +1,40 @@
 <template>
       <div class="content mb-5">
-         <div class="cash-assets">
+         <div class="account-group">
             <div class="row">
                   <div class="divider-title col-2">
-                     Cash Assets
+                     {{ groupName }}
                   </div>
                   <hr class="divider">
             </div>
             <div class="row">
-               <div class="col-4 d-flex justify-content-center mt-4">
-                   <card-component-v2 />
-               </div>
-               <div class="col-4 d-flex justify-content-center mt-4">
-                   <card-component-v2 />
-               </div>
-               <div class="col-4 d-flex justify-content-center mt-4">
-                   <card-component-v2 />
-               </div>
-               <div class="col-4 d-flex justify-content-center mt-4">
-                   <card-component-v2 />
-               </div>
-               <div class="col-4 d-flex justify-content-center mt-4">
-                   <card-component-v2 />
-               </div>
-               <div class="col-4 d-flex justify-content-center mt-4">
-                   <card-component-v2 />
+               <div v-for="(account, index) in accounts" class="col-4 d-flex justify-content-center mt-4">
+                   <card-component-v2 
+                    :account-name="account.name"
+                    :account-value="account.initial_amount"
+                   />
                </div>
             </div>
-         </div>
-         <div class="tangible-properties">
- 
-         </div>
-         <div class="real-estate">
-
          </div>
       </div>    
 </template>
 
 <script>
-   import CardComponentV2 from './sub-components/CardComponentV2.vue';
+import CardComponentV2 from './sub-components/CardComponentV2.vue';
 
-   export default{
-      components:{
-         CardComponentV2
+export default {
+   components: {
+      CardComponentV2
+   },
+   props : {
+      'groupName' : {
+         type : String,
+      },
+      'accounts' : {
+         type : Array
       }
-   }
+   },
+}
 </script>
 
 <style scoped>
@@ -59,13 +49,6 @@
 }
 .content{
     width: 100%;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto auto;
-    grid-template-areas: 
-    'cash-assets'
-    'tangible-properties'
-    'real-estate';
 }
 
 

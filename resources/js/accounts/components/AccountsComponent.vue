@@ -3,28 +3,43 @@
         <side-navigation-component current-page="accounts" />
         <div class="item-right-content">
             <div class="right-side-item-topnav row">
-                    <top-navigation-component/>
+                <top-navigation-component/>
             </div>
             <div class="right-side-item-widgets row"> 
-                    <content-component />
-                    <content-component />
+                <content-component v-for="(accountGroup, index) in accountGroups" 
+                :group-name="accountGroup.name"
+                :accounts="accountGroup.accounts"
+                />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import SideNavigationComponent from '../../layouts-components/SideNavigationComponent.vue';
-    import TopNavigationComponent from '../../layouts-components/TopNavigationComponent.vue';
-    import ContentComponent from './ContentComponent.vue';
+import SideNavigationComponent from '../../layouts-components/SideNavigationComponent.vue';
+import TopNavigationComponent from '../../layouts-components/TopNavigationComponent.vue';
+import ContentComponent from './ContentComponent.vue';
+import AccountsService from '../services/AccountsService';
 
-    export default {
-        components : {
-            'side-navigation-component' : SideNavigationComponent,
-            'top-navigation-component'  : TopNavigationComponent,
-            'content-component'         : ContentComponent
+export default {
+    components : {
+        'side-navigation-component' : SideNavigationComponent,
+        'top-navigation-component'  : TopNavigationComponent,
+        'content-component'         : ContentComponent
+    },
+    data () {
+        return {
+            accountGroups: {} 
         }
+    },
+    mounted() {
+        AccountsService.getAccounts()
+        .then(response => {
+            this.accountGroups = response.data.data
+            console.log(this.accountGroups)
+        })
     }
+}
 </script>
 
 <style scoped>

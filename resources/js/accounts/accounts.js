@@ -1,7 +1,6 @@
 require('../bootstrap');
 
 import AccountsComponent from './components/AccountsComponent.vue'
-
 import Vue from "vue";
 
 Vue.component('accounts-component', AccountsComponent);

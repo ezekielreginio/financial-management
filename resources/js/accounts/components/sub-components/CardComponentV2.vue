@@ -8,7 +8,7 @@
             </div>
         </div>
         <div v-if="!isEditMode" class="card-title card-account-name">
-          Philippine Bank Bank Bank Bank Bank Bank Bank Bank Bank Test
+            {{ accountName }}
         </div>
         <div v-else class="w-80">
           <textarea cols="15" rows="1" class="card-title card-textarea"></textarea>
@@ -18,7 +18,7 @@
                 <span>PHP</span>
             </div>
             <div class="money-value">
-                <span v-if="!isEditMode">100,000,000</span>
+                <span v-if="!isEditMode">{{ accountValue }}</span>
                 <input v-else type="text" class="money-value" style="height: 90%">
             </div>
         </div>
@@ -28,6 +28,14 @@
 
 <script>
 export default {
+  props : {
+    'accountName' : {
+        type : String,
+    },
+    'accountValue' : {
+        type : Number
+    }
+  },
   data() {
     return {
       isEditMode: false,
