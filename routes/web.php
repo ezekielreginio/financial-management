@@ -20,8 +20,8 @@ Route::prefix('finance-management')->group(function () {
         Route::get('/dashboard', function () {
             return view('dashboard.index');
         });
-    });
-    Route::get('/accounts', function () {
-        return view('accounts.index');
-    });
+        Route::get('/accounts', function () {
+            return view('accounts.index');
+        });
+    });  
 });

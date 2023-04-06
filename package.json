@@ -26,6 +26,7 @@
     "dependencies": {
         "@amcharts/amcharts5": "^5.3.8",
         "chart.js": "^4.2.1",
+        "dotenv": "^16.0.3",
         "vue-chartjs": "^5.2.0",
         "vue-router": "^3.5.4",
         "vuex": "^2.5.0",
